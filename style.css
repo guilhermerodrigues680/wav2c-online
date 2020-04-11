@@ -1,0 +1,16 @@
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+
+
+#div-c-out {
+    white-space: pre;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+}
