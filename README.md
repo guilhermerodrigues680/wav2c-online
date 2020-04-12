@@ -1,5 +1,7 @@
 # wav2c-online
 Acesse o conversor em: [guilhermerodrigues680.github.io/wav2c-online](https://guilhermerodrigues680.github.io/wav2c-online)  
+Video onde explico Como converter e reproduzir áudio usando o Arduino sem módulo mp3:  
+https://www.youtube.com/watch?v=LHUzp2lcPNU
 
 ## Descrição
 Conversor escrito em Javascript que lê um WAV Unsigned 8-bit PCM e converte em um array C/C++ para uso em microcontroladores  
@@ -15,6 +17,10 @@ Após gerado o arquivo carregue ele no conversor que gerará o código C/C++ .
 Para o Arduino, o código de Michael Smith pode ser ultilizado para reproduzir o som.
 https://playground.arduino.cc/Code/PCMAudio/
 
+
+### Capturas de tela
+![SCREENSHOT-01.png](docs/SCREENSHOT-01.png)
+![SCREENSHOT-02.png](docs/SCREENSHOT-02.png)
 
 ### Links
 - https://www.reddit.com/r/javascript/comments/nuizh/reading_raw_wave_data_in_jshtml5/
