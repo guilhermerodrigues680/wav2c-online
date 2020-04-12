@@ -57,7 +57,7 @@
             <div class="col-sm-6">
                 <h3>Escolha o audio *.wav</h3>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="audiowav" accept="audio/wav" >
+                    <input type="file" class="custom-file-input" id="input-audiowav" accept="audio/wav" >
                     <label class="custom-file-label" for="customFile" id="label-audio-upload">Escolha o arquivo...</label>
                 </div>
                 <p id="p-file-info"></p>
@@ -67,8 +67,8 @@
             <!-- COLUNA 2 -->
             <div id="div-acoes" class="col-sm-6">
                 <h3>Ações</h3>
-                <p id="div-status"></p>
-                <button id="button-copy-clipboard" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+                <p id="p-status"></p>
+                <button id="button-copy-clipboard" type="button" class="btn btn-info" data-toggle="modal" data-target="#cp-modal">
                     Copiar Código Gerado</button>
                 <button id="button-download-h-file" class="btn btn-primary">Download sounddata.h</button>
             </div>
@@ -87,7 +87,7 @@
 
 
     <!-- MODAL AREA DE TRASNFERENCIA-->
-    <div class="modal" id="myModal">
+    <div class="modal" id="cp-modal">
         <div class="modal-dialog">
         <div class="modal-content">
     
