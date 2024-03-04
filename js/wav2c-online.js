@@ -2,6 +2,7 @@
 // WAV2C Online - Por: Guilherme Rodrigues
 //
 
+let audioBytesArray;
 
 $( document ).ready(function(){
     $( "#div-acoes" ).hide();
@@ -10,6 +11,7 @@ $( document ).ready(function(){
     $( "#input-audiowav" ).on( "change", lerArquivoWav);
     $( "#button-copy-clipboard" ).on( "click", copyToClipboard);
     $( "#button-download-h-file" ).on( "click", generateDownloadHFile);
+    $( "#button-download-bin-file" ).on( "click", generateDownloadBinFile);
 });
 
 
@@ -32,6 +34,8 @@ function lerArquivoWav() {
         const AUDIO_SAMPLES = audioBytes.length - 44;
         // console.debug(audioBytes)
 
+        audioBytesArray = audioBytes.slice(44);
+
         $( "#p-file-info" ).html(`<strong>Taxa de amostragem:</strong> ${FRAMERATE} , <strong>amostras:</strong> ${AUDIO_SAMPLES}`);
         $( "#p-status" ).text( "Iniciando a conversão" );
 
@@ -42,7 +46,7 @@ function lerArquivoWav() {
         txt += `const int ${SOUND_NAME}_length = ${AUDIO_SAMPLES}; \n\n`;
         txt += `const unsigned char ${SOUND_NAME}_data[] PROGMEM ={`;
 
-        audioBytes.slice(44).forEach((sample, idx, arr) => {
+        audioBytesArray.forEach((sample, idx, arr) => {
 
             switch (String(sample).length) {
                 case 1:
@@ -108,4 +112,23 @@ function copyToClipboard() {
         document.execCommand("copy");
         // alert("O código gerado foi copiado! Pressione Ctrl+V para colá-lo")
     }
+}
+
+/** Função responsável por gerar um arquivo binário para download */
+function generateDownloadBinFile() {
+    if (!audioBytesArray) {
+        alert("Primeiro selecione um arquivo WAV.");
+        return;
+    }
+
+    const blob = new Blob([audioBytesArray], {type: "octet/stream"});
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.style.display = "none";
+    a.href = url;
+    a.download = "sounddata.dat";
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
 }
